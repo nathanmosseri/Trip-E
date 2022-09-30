@@ -1,9 +1,12 @@
 import React from 'react'
+import Header from './Header'
 
 export default function TripHomePage() {
   return (
     <div>
-      <h1>TripHomePage</h1>
+      <Header />
+      <h1>My Trips</h1>
+
     </div>
   )
 }
