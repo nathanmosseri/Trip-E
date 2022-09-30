@@ -10,15 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_30_135704) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_30_181203) do
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "time"
+    t.string "date"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "start_date"
     t.string "end_date"
     t.string "location"
     t.string "name"
-    t.string "group_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
   end
 
   create_table "memberships", force: :cascade do |t|
