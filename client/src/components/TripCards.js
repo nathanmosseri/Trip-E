@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 export default function TripCards() {
   return (
@@ -7,7 +8,7 @@ export default function TripCards() {
         <img src="" />
         <h2>Start/End Date</h2>
         <h2>Location</h2>
-        <button>View Itinerary</button>
+        <Link to='/itinerary'>View Trip Details</Link>
     </div>
   )
 }
