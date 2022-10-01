@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react'
 import TripDetails from './TripDetails'
 import TripCarousel from './TripCarousel'
 
