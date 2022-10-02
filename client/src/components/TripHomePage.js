@@ -18,7 +18,6 @@ export default function TripHomePage() {
       {createTripButton ? <TripForm /> : null}
       <h1>My Trips</h1>
       <TripCards/>
-
     </div>
   )
 }
