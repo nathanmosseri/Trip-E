@@ -2,13 +2,13 @@ import React from 'react'
 
 export default function TripCarousel({groupActivities}) {
 
-  const activities = groupActivities.map((activity) => {
+  const activities = groupActivities.map((activity, i) => {
     return (
-      <div>
-        <h6>date: {activity.date}</h6>
-        <h7>time: {activity.time}</h7>
-        <h3>{activity.name}</h3>
-        <h5>{activity.description}</h5>
+      <div key={i}>
+        <h6 key={activity.date}>date: {activity.date}</h6>
+        <h6 key={activity.time}>time: {activity.time}</h6>
+        <h3 key={activity.name}>{activity.name}</h3>
+        <h5 key={activity.description}>{activity.description}</h5>
       </div>
     )
   })
