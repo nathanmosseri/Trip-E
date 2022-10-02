@@ -1,22 +1,22 @@
 import React from 'react'
 
 export default function TripForm() {
-    function handleChange(e){
+    // function handleChange(e){
 
-    }
+    // }
     
-    function handleSubmit(e){
-        e.preventDefault();
-        fetch("/groups", {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify(),
-        })
-        .then((r) => r.json())
-        .then((data) => console.log(data))
-    }
+    // function handleSubmit(e){
+    //     e.preventDefault();
+    //     fetch("/groups", {
+    //      method: "POST",
+    //      headers: {
+    //         "Content-Type": "application/json",
+    //      },
+    //      body: JSON.stringify(),
+    //     })
+    //     .then((r) => r.json())
+    //     .then((data) => console.log(data))
+    // }
     
   return (
     <div>
