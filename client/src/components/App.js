@@ -3,8 +3,9 @@ import Login from './Login';
 import Signup from './Signup';
 import TripHomePage from './TripHomePage';
 import Itinerary from './Itinerary';
-
 import {Route, Switch} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
 function App() {
   
   const [user, setUser] = useState(null);
