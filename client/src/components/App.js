@@ -3,6 +3,7 @@ import Login from './Login';
 import Signup from './Signup';
 import TripHomePage from './TripHomePage';
 import Itinerary from './Itinerary';
+
 import {Route, Switch} from 'react-router-dom';
 function App() {
   
@@ -23,7 +24,6 @@ function App() {
   function handleLogout() {
     setUser(null);
   }
-
   return (
     <div className="App">
       <Switch>

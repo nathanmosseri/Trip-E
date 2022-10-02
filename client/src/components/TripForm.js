@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function TripForm() {
     function handleChange(e){
-
     }
     
     function handleSubmit(e){
