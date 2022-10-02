@@ -1,40 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-export default function Login() {
-  // const [login, setLogin] = useState({username: '', password: ''})
+export default function Login({ onLogin }) {
+  const [username, setUsername] = useState("");
 
-  // function handleChange(e){
-  //   setLogin({...login, [e.target.name]: e.target.value})
-  // }
-
-  // function handleSubmit(e){
-  //   e.preventDefault()
-  //   fetch('/login', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(login),
-  //   })
-  //   .then((r) => r.json())
-  //   .then((data))
-  // }
+  function handleSubmit(e){
+    e.preventDefault();
+    fetch('/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username }),
+    })
+    .then((r) => r.json())
+    .then((user) => onLogin(user));
+  }
+  
   return (
     <div>
-      <form >
+      <form onSubmit={handleSubmit}>
       <label>
             Username:
-            <input type="text" name="username" />
+            <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
         </label>
         <br />
-        <label>
+        {/* <label>
             Password:
             <input type="text" name="password" />
         </label>
+        <br /> */}
+        <button type="submit">Login</button>
         <br />
-        <button>Not a member?{'\n'}
-        Sign up!</button>
       </form>
+      <button>Not a member?{'\n'}
+        Sign up!</button>
     </div>
   )
 }
