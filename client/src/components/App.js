@@ -34,7 +34,7 @@ function App() {
           <Itinerary />
         </Route>
         <Route path='/login'>
-          <Login/>
+          <Login onLogin={handleLogin}/>
         </Route>
         <Route path='/signup'>
           <Signup/>
