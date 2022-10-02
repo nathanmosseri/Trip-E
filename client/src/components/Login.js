@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-
+import Signup from './Signup';
 
 export default function Login({ onLogin }) {
   const [username, setUsername] = useState("");
+  const [signUp, setSignUp] = useState(true);
 
   function handleSubmit(e){
     e.preventDefault();
@@ -16,9 +17,12 @@ export default function Login({ onLogin }) {
     .then((r) => r.json())
     .then((user) => onLogin(user));
   }
-  
+
+  function handleClick(e){
+    setSignUp(prev => !prev)
+  }
   return (
-    <div>
+    <div className="login">
       <form onSubmit={handleSubmit}>
       <label>
             Username:
@@ -33,8 +37,8 @@ export default function Login({ onLogin }) {
         <button type="submit">Login</button>
         <br />
       </form>
-      <button>Not a member?{'\n'}
-        Sign up!</button>
+      {signUp ? <button onClick={handleClick}>Not a member?{'\n'}
+        Sign up!</button> : <Signup onLogin={onLogin}/>}
     </div>
   )
 }
