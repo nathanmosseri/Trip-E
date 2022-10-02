@@ -5,6 +5,25 @@ import TripHomePage from './TripHomePage';
 import Itinerary from './Itinerary';
 import {Route, Switch} from 'react-router-dom';
 function App() {
+  
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  function handleLogin(user) {
+    setUser(user);
+  }
+
+  function handleLogout() {
+    setUser(null);
+  }
+
   return (
     <div className="App">
       <Switch>
