@@ -9,9 +9,9 @@ User.destroy_all
 Group.destroy_all 
 Membership.destroy_all
 
-Group.create(start_date: '09-22-22', end_date: '09-29-22', location: 'New York', name: 'Jews take New York', description: 'WE TAKINNN OVVVVAAAA')
-Group.create(start_date: '10-22-22', end_date: '10-29-22', location: 'New Jersey', name: 'Joysey shawww adventure', description: 'Its a Joysey thing')
-Group.create(start_date: '08-22-22', end_date: '08-29-22', location: 'Miami', name: 'Miami boys choir', description: 'Adom olam ahser malach')
+Group.create(start_date: 'Sept 22 2022', end_date: 'Sept 29 2022', location: 'New York', name: 'Jews take New York', description: 'WE TAKINNN OVVVVAAAA')
+Group.create(start_date: 'Oct 22 2022', end_date:  'Oct 29 2022', location: 'New Jersey', name: 'Joysey shawww adventure', description: 'Its a Joysey thing')
+Group.create(start_date: 'Aug 22 2023', end_date: 'Aug 29 2023', location: 'Miami', name: 'Miami boys choir', description: 'Adom olam ahser malach')
 
 35.times do 
     User.create(
