@@ -16,7 +16,7 @@ export default function Login({ setUser }) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ loginData }),
+      body: JSON.stringify(loginData),
     })
     .then((r) => r.json())
     .then((user) => console.log(user));
@@ -35,7 +35,7 @@ export default function Login({ setUser }) {
         <br />
         <label>
             Password:
-            <input type="text" name="password" value={loginData.password} onChange={handleLogin}/>
+            <input type="password" name="password" value={loginData.password} onChange={handleLogin}/>
         </label>
         <br />
         <button type="submit">Login</button>
