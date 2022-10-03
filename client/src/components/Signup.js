@@ -1,25 +1,24 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
-export default function Signup({ onLogin }) {
-  const initialState = {name: '', username: '', password: ''}
-  const [signUpInfo, setSignUpInfo] = useState(initialState)
+export default function Signup({ setUser }) {
+  const [signUpData, setSignUpData] = useState({full_name: '', username: '', password: ''})
 
   function handleChange(e){
-    setSignUpInfo({...signUpInfo, [e.target.name]: e.target.value})
+    setSignUpData({...signUpData, [e.target.name]: e.target.value});
   }
 
   function handleSubmit(e){
     e.preventDefault();
-    fetch("http://localhost:3000/signup", {
+    fetch("http://localhost:3000/register", {
       method: "POST",
          headers: {
             "Content-Type": "application/json",
          },
-         body: JSON.stringify(signUpInfo),
+         body: JSON.stringify(signUpData),
         })
         .then((r) => r.json())
-        .then((user) => onLogin(user))
-        setSignUpInfo(initialState)
+        .then((user) => console.log(user))
     }
 
   return (
@@ -27,21 +26,22 @@ export default function Signup({ onLogin }) {
       <form className="signupform" onSubmit={handleSubmit}>
       <label >
             Name:
-            <input type="text" name="name" onChange={handleChange} value={signUpInfo.name}/>
+            <input type="text" name="full_name" onChange={handleChange} value={signUpData.full_name}/>
         </label>
         <br />
       <label>
             Username:
-            <input type="text" name="username" onChange={handleChange} value={signUpInfo.username}/>
+            <input type="text" name="username" onChange={handleChange} value={signUpData.username}/>
         </label>
         <br />
         <label>
             Password:
-            <input type="text" name="password" onChange={handleChange} value={signUpInfo.password}/>
+            <input type="text" name="password" onChange={handleChange} value={signUpData.password}/>
         </label>
         <br />
         <button type="submit" className="submitbutton">Sign Up!</button>
         <br />
+        <Link to='/login'>Login</Link>
       </form>
     </div>
   )

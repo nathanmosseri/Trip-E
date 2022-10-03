@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Signup from './Signup';
 
 export default function Login({ setUser }) {
   const [loginData, setLoginData] = useState({username: '', password: ''});
-  const [signUp, setSignUp] = useState(true);
 
   function handleLogin(e) {
     setLoginData({...loginData, [e.target.name]: e.target.value});
@@ -25,9 +23,6 @@ export default function Login({ setUser }) {
     });
   }
 
-  function handleClick(e){
-    setSignUp(prev => !prev)
-  }
   return (
     <div className="login">
       <form onSubmit={handleSubmit} className='signupform'>
