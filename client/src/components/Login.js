@@ -40,7 +40,6 @@ export default function Login({ onLogin }) {
       {signUp ? <button onClick={handleClick}>Not a member?{'\n'}
         Sign up!</button> : <Signup onLogin={onLogin}/>}
     </div>
-    blah blah blah
   )
 }
 
