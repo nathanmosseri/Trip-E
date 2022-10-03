@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-
+    # before_action :authorized, only: [:index]
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
     def index 
