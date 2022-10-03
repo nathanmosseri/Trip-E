@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Signup from './Signup';
 
 export default function Login({ setUser }) {
@@ -19,7 +20,9 @@ export default function Login({ setUser }) {
       body: JSON.stringify(loginData),
     })
     .then((r) => r.json())
-    .then((user) => console.log(user));
+    .then((user) => {
+      setUser(user)
+    });
   }
 
   function handleClick(e){
@@ -27,7 +30,7 @@ export default function Login({ setUser }) {
   }
   return (
     <div className="login">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='signupform'>
       <label>
             Username:
             <input type="text" name="username" value={loginData.username} onChange={handleLogin}/>
@@ -40,9 +43,9 @@ export default function Login({ setUser }) {
         <br />
         <button type="submit">Login</button>
         <br />
+      <Link to='/signup'>Not a member?<br/>
+        Sign up!</Link>
       </form>
-      {signUp ? <button onClick={handleClick}>Not a member?{'\n'}
-        Sign up!</button> : <Signup />}
     </div>
   )
 }

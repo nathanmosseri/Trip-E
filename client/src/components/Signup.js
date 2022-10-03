@@ -23,7 +23,7 @@ export default function Signup({ onLogin }) {
     }
 
   return (
-    <div>
+    <div className='login'>
       <form className="signupform" onSubmit={handleSubmit}>
       <label >
             Name:
