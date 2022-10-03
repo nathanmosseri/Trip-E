@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import Signup from './Signup';
 
 export default function Login({ setUser }) {
@@ -30,7 +30,7 @@ export default function Login({ setUser }) {
   }
   return (
     <div className="login">
-      <form onSubmit={handleSubmit} className='signupform'>
+      <form onSubmit={handleSubmit}>
       <label>
             Username:
             <input type="text" name="username" value={loginData.username} onChange={handleLogin}/>
@@ -38,14 +38,14 @@ export default function Login({ setUser }) {
         <br />
         <label>
             Password:
-            <input type="password" name="password" value={loginData.password} onChange={handleLogin}/>
+            <input type="text" name="password" value={loginData.password} onChange={handleLogin}/>
         </label>
         <br />
-        <button type="submit">Login</button>
+        <button type="submit" onClick={handleClick}>Login</button>
         <br />
-      <Link to='/signup'>Not a member?<br/>
-        Sign up!</Link>
       </form>
+      {signUp ? <button onClick={handleClick}>Not a member?{'\n'}
+        Sign up!</button> : <Signup />}
     </div>
   )
 }
