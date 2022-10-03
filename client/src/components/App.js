@@ -25,7 +25,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3000/users/44`).then(res => res.json())
+    fetch(`http://localhost:3000/users/3`).then(res => res.json())
     .then((data) => {
       setUserData(data)
       setTripCardData(data.groups)

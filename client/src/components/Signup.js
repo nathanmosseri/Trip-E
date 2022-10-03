@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-
 export default function Signup({ setSignUpSubmitted }) {
   const [signUpData, setSignUpData] = useState({full_name: '', username: '', password: ''})
   const history = useHistory()
-  
   function handleChange(e){
     setSignUpData({...signUpData, [e.target.name]: e.target.value});
   }
-
   function handleSubmit(e){
     e.preventDefault();
     fetch("http://localhost:3000/register", {
@@ -23,7 +20,6 @@ export default function Signup({ setSignUpSubmitted }) {
         setSignUpSubmitted(prev => !prev)
         history.push("/login")
     }
-
   return (
     <div className='login'>
       <form className="signupform" onSubmit={handleSubmit}>
