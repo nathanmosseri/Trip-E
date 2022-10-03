@@ -3,7 +3,7 @@ import Header from './Header'
 import TripCards from './TripCards'
 import TripForm from './TripForm'
 
-export default function TripHomePage() {
+export default function TripHomePage({tripCardData}) {
 
   const [createTripButton, setCreateTripButton] = useState(false)
 
@@ -17,7 +17,7 @@ export default function TripHomePage() {
       <button onClick={handleClick}>{createTripButton ? 'Cancel' : 'Create a Trip'}</button>
       {createTripButton ? <TripForm /> : null}
       <h1>My Trips</h1>
-      <TripCards/>
+      <TripCards tripCardData={tripCardData} />
     </div>
   )
 }

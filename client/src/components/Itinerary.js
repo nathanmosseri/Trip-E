@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useRouteMatch } from 'react-router-dom'
 import TripDetails from './TripDetails'
 import TripCarousel from './TripCarousel'
 import Calendar, { MonthView } from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 
 export default function Itinerary() {
+    const match = useRouteMatch()
+  console.log(match)
+  console.log(match.params)
+  // const params = useParams()
+  // console.log(params)
 
   // const [value, onChange] = useState(new Date())
   const [groupData, setGroupData] = useState([])
   const [groupActivities, setGroupActivities] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:3000/groups/2`).then(res => res.json())
+    fetch(`http://localhost:3000/groups/${match.params.tripid}`).then(res => res.json())
     .then((data) => {
       setGroupData(data)
       setGroupActivities(data.activities)
