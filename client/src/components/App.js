@@ -55,7 +55,7 @@ useEffect(() => {
       <Switch>
         <Route exact path="/">
           {/* {isLoggedIn ? <TripHomePage tripCardData={tripCardData} /> : <Redirect to='/login'/>} */}
-          <TripHomePage user={user} tripCardData={tripCardData} />
+          <TripHomePage user={user} tripCardData={tripCardData} setUser={setUser}/>
         </Route>
         <Route path={`/itinerary/:tripid`}>
           {/* {isLoggedIn ?  <Itinerary /> : <Redirect to='/login'/> } */}
