@@ -3,12 +3,14 @@ import Login from './Login';
 import Signup from './Signup';
 import TripHomePage from './TripHomePage';
 import Itinerary from './Itinerary';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function App() {
   
   const [user, setUser] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [signUpSubmitted, setSignUpSubmitted] = useState(false);
 
   useEffect(() => {
     fetch("/me").then((response) => {
@@ -29,16 +31,16 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path='/'>
-          <TripHomePage />
+         <TripHomePage />
         </Route>
         <Route path='/itinerary'>
           <Itinerary />
         </Route>
         <Route path='/login'>
-          <Login setUser={setUser}/>
+          <Login setUser={setUser} setIsLoggedIn={setIsLoggedIn}/>
         </Route>
         <Route path='/signup'>
-          <Signup setUser={setUser}/>
+          <Signup setSignUpSubmitted={setSignUpSubmitted}/>
         </Route>
       </Switch>
     </div>
