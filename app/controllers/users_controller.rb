@@ -15,13 +15,24 @@ class UsersController < ApplicationController
     def create
         user = User.create!(user_params)
         token = encode_token({user_id: user.id})
-        cookies.signed[:jwt] = {
-            value: token,
-            httponly: true, 
-        }
+        render json: {user:user, token:token}
+    end
+    def login
+        user = User.find_by!(username:params[:username]).try(:authenticate, params[:password])
+        if user 
+            token = encode_token({user_id: user.id})
+            render json: {user:user, token:token}
+        else
+            render json: {error:"wrong password"}, status: 401
+        end
+    end
+    
+    def profile
+        token = request.headers["token"]
+        user_id = decode_token(token)
+        user = User.find(user_id)
         render json: user
     end
-
     private 
 
     def find_user
