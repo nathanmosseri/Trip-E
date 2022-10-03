@@ -15,16 +15,19 @@ export default function Itinerary() {
   // const [value, onChange] = useState(new Date())
   const [groupData, setGroupData] = useState([])
   const [groupActivities, setGroupActivities] = useState([])
+  const [dateRange, setDateRange] = useState([])
 
   useEffect(() => {
     fetch(`http://localhost:3000/groups/${match.params.tripid}`).then(res => res.json())
     .then((data) => {
       setGroupData(data)
       setGroupActivities(data.activities)
+      setDateRange(data.date_range)
     })
   }, [])
 
   console.log(groupData)
+  console.log(dateRange)
 
 
   return (
@@ -35,7 +38,7 @@ export default function Itinerary() {
     <h2>{groupData.description}</h2>
     <h3>{groupData.start_date} - {groupData.end_date}</h3>
     <Calendar calendarType='US' view='month' selectRange onChange={(value) => console.log(value)} />
-    <TripCarousel groupActivities={groupActivities}/>
+    <TripCarousel groupActivities={groupActivities} dateRange={dateRange}/>
     {/* <MonthView tileContent={<p>maybe this can work?</p>} activeStartDate={new Date(2022, 9, 22)} minDate={new Date(new Date(2017, 9, 1))} maxDate={new Date(new Date(2022, 9, 22))} /> */}
     
     </div>

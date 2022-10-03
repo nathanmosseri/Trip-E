@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function TripCarousel({groupActivities}) {
+export default function TripCarousel({groupActivities, dateRange}) {
 
   const activities = groupActivities.map((activity, i) => {
     return (
@@ -13,8 +13,13 @@ export default function TripCarousel({groupActivities}) {
     )
   })
 
+  const dates = dateRange.map((date) => {
+    return <h4>{date}</h4>
+  })
+
   return (
     <div>
+      {dates}
       {activities}
     </div>
   )
