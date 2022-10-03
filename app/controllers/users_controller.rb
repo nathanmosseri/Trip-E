@@ -21,7 +21,7 @@ class UsersController < ApplicationController
         user = User.find_by!(username:params[:username]).try(:authenticate, params[:password])
         if user 
             token = encode_token({user_id: user.id})
-            render json: {user:user, token:token}
+            render json: {user:user, token:token, groups: user.groups}
         else
             render json: {error:"wrong password"}, status: 401
         end
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
         token = request.headers["token"]
         user_id = decode_token(token)
         user = User.find(user_id)
-        render json: user
+        render json: user,  serializer: UserShowMethodSerializer
     end
     private 
 

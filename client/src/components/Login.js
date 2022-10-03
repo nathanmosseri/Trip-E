@@ -5,7 +5,7 @@ import { Link, Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 
-export default function Login({ setUser, setIsLoggedIn }) {
+export default function Login({ setUser, setIsLoggedIn, setTripCardData }) {
   const [loginData, setLoginData] = useState({ username: "", password: "" });
   const history = useHistory();
   function handleLogin(e) {
@@ -26,8 +26,11 @@ export default function Login({ setUser, setIsLoggedIn }) {
     })
       .then((r) => r.json())
       .then((data) => {
-        setUser(data);
         if (data["user"]) {
+          setUser(data.user);
+          setIsLoggedIn(true)
+          localStorage.setItem("jwt",data.token)
+          setTripCardData(data.groups);
           history.push("/");
         } else {
           alert(data["error"]);

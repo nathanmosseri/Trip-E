@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Header() {
+export default function Header({user}) {
   return (
-    <div>Welcome back, __________!</div>
+    <div>Welcome back, {user.full_name}!</div>
   )
 }

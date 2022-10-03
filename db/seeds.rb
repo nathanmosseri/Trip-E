@@ -17,7 +17,7 @@ Group.create(start_date: '08-22-22', end_date: '08-29-22', location: 'Miami', na
     User.create(
         username: Faker::Internet.username,
         full_name: Faker::Name.name ,
-        password_digest:  Faker::Internet.password   
+        password:  "123"
     )
 end
 
