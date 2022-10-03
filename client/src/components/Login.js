@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Signup from './Signup';
 
 export default function Login({ setUser }) {
@@ -29,7 +30,7 @@ export default function Login({ setUser }) {
   }
   return (
     <div className="login">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='signupform'>
       <label>
             Username:
             <input type="text" name="username" value={loginData.username} onChange={handleLogin}/>
@@ -37,14 +38,14 @@ export default function Login({ setUser }) {
         <br />
         <label>
             Password:
-            <input type="text" name="password" value={loginData.password} onChange={handleLogin}/>
+            <input type="password" name="password" value={loginData.password} onChange={handleLogin}/>
         </label>
         <br />
         <button type="submit">Login</button>
         <br />
+      <Link to='/signup'>Not a member?<br/>
+        Sign up!</Link>
       </form>
-      {signUp ? <button onClick={handleClick}>Not a member?{'\n'}
-        Sign up!</button> : <Signup />}
     </div>
   )
 }
