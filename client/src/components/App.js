@@ -20,6 +20,7 @@ function App() {
   const [tripCardData, setTripCardData] = useState([]);
 
   useEffect(() => {
+
     fetch(`http://localhost:3000/users/44`)
       .then((res) => res.json())
       .then((data) => {
@@ -27,6 +28,7 @@ function App() {
         setTripCardData(data.groups);
       });
   }, []);
+
 
   // useEffect(() => {
   //   fetch("/me").then((response) => {

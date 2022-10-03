@@ -1,7 +1,9 @@
+
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 
 import { useHistory } from "react-router-dom";
+
 
 export default function Login({ setUser, setIsLoggedIn }) {
   const [loginData, setLoginData] = useState({ username: "", password: "" });
@@ -10,7 +12,10 @@ export default function Login({ setUser, setIsLoggedIn }) {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   }
 
+
   function handleSubmit(e) {
+
+
     e.preventDefault();
     fetch("http://localhost:3000/login", {
       method: "POST",
@@ -29,9 +34,9 @@ export default function Login({ setUser, setIsLoggedIn }) {
         }
       });
   }
-
   return (
     <div className="login">
+
       <form onSubmit={handleSubmit}>
         <label>
           Username:
@@ -51,11 +56,16 @@ export default function Login({ setUser, setIsLoggedIn }) {
             value={loginData.password}
             onChange={handleLogin}
           />
+
         </label>
         <br />
         <button type="submit">Login</button>
         <br />
+      <Link to='/signup'>Not a member?<br/>
+        Sign up!</Link>
       </form>
     </div>
+
   );
 }
+
