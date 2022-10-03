@@ -16,10 +16,12 @@ export default function Login({ setUser }) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ loginData }),
+      body: JSON.stringify(loginData),
     })
     .then((r) => r.json())
-    .then((user) => console.log(user));
+    .then((user) => {
+      setUser(user)
+    });
   }
 
   function handleClick(e){

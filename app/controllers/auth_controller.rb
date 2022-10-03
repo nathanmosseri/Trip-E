@@ -9,7 +9,7 @@ class AuthController < ApplicationController
             }
             render json: {user_id: user.id}
         else
-            render json: {message: "log in!"}
+            render json: {message: "please log in!"}
         end
     end
 end
