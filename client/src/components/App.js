@@ -3,20 +3,35 @@ import Login from './Login';
 import Signup from './Signup';
 import TripHomePage from './TripHomePage';
 import Itinerary from './Itinerary';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, useParams} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 function App() {
   
+  let {tripid} = useParams()
+
   const [user, setUser] = useState(null);
+  const [userData, setUserData] = useState([])
+  const [tripCardData, setTripCardData] = useState([])
+
+
+  console.log(userData)
 
   useEffect(() => {
-    fetch("/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
+    fetch(`http://localhost:3000/users/44`).then(res => res.json())
+    .then((data) => {
+      setUserData(data)
+      setTripCardData(data.groups)
+    })
+  }, [])
+
+  // useEffect(() => {
+  //   fetch("/me").then((response) => {
+  //     if (response.ok) {
+  //       response.json().then((user) => setUser(user));
+  //     }
+  //   });
+  // }, []);
 
   // function handleLogin(user) {
   //   setUser(user);
@@ -29,9 +44,9 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path='/'>
-          <TripHomePage />
+          <TripHomePage tripCardData={tripCardData} />
         </Route>
-        <Route path='/itinerary'>
+        <Route path={`/itinerary/:tripid`}>
           <Itinerary />
         </Route>
         <Route path='/login'>
