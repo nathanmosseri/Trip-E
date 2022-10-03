@@ -18,13 +18,13 @@ function App() {
     });
   }, []);
 
-  function handleLogin(user) {
-    setUser(user);
-  }
+  // function handleLogin(user) {
+  //   setUser(user);
+  // }
 
-  function handleLogout() {
-    setUser(null);
-  }
+  // function handleLogout() {
+  //   setUser(null);
+  // }
   return (
     <div className="App">
       <Switch>
@@ -35,7 +35,7 @@ function App() {
           <Itinerary />
         </Route>
         <Route path='/login'>
-          <Login onLogin={handleLogin}/>
+          <Login setUser={setUser}/>
         </Route>
         <Route path='/signup'>
           <Signup/>

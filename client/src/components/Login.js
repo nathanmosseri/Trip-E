@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
 import Signup from './Signup';
 
-export default function Login({ onLogin }) {
-  const [username, setUsername] = useState("");
+export default function Login({ setUser }) {
+  const [loginData, setLoginData] = useState({username: '', password: ''});
   const [signUp, setSignUp] = useState(true);
+
+  function handleLogin(e) {
+    setLoginData({...loginData, [e.target.name]: e.target.value});
+  }
 
   function handleSubmit(e){
     e.preventDefault();
-    fetch('/login', {
+    fetch('http://localhost:3000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username }),
+      body: JSON.stringify({ loginData }),
     })
     .then((r) => r.json())
-    .then((user) => onLogin(user));
+    .then((user) => console.log(user));
   }
 
   function handleClick(e){
@@ -26,19 +30,19 @@ export default function Login({ onLogin }) {
       <form onSubmit={handleSubmit}>
       <label>
             Username:
-            <input type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
+            <input type="text" name="username" value={loginData.username} onChange={handleLogin}/>
         </label>
         <br />
-        {/* <label>
+        <label>
             Password:
-            <input type="text" name="password" />
+            <input type="text" name="password" value={loginData.password} onChange={handleLogin}/>
         </label>
-        <br /> */}
+        <br />
         <button type="submit">Login</button>
         <br />
       </form>
       {signUp ? <button onClick={handleClick}>Not a member?{'\n'}
-        Sign up!</button> : <Signup onLogin={onLogin}/>}
+        Sign up!</button> : <Signup />}
     </div>
   )
 }
