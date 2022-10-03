@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Signup from './Signup';
 
-export default function Login({ setUser }) {
+import { useHistory } from 'react-router-dom';
+
+
+export default function Login({ setUser, setIsLoggedIn }) {
   const [loginData, setLoginData] = useState({username: '', password: ''});
-
+  const history = useHistory()
   function handleLogin(e) {
     setLoginData({...loginData, [e.target.name]: e.target.value});
   }
@@ -21,6 +23,7 @@ export default function Login({ setUser }) {
     .then((r) => r.json())
     .then((user) => {
       setUser(user)
+      history.push("/")
     });
   }
 
