@@ -38,3 +38,44 @@ end
 #     )
 # end
 
+Activity.create(
+    name: 'vibing',
+    description: 'just vibez',
+    time: '2:30pm',
+    date: '2022-09-23',
+    group_id: 1,
+    datetime: Time.parse('2022-09-23 2:30pm')
+)
+Activity.create(
+    name: 'vibing',
+    description: 'just vibez',
+    time: '2:30pm',
+    date: '2022-09-24',
+    group_id: 1,
+    datetime: Time.parse('2022-09-24 2:30pm')
+)
+Activity.create(
+    name: 'vibing',
+    description: 'just vibez',
+    time: '2:30pm',
+    date: '2022-09-26',
+    group_id: 1,
+    datetime: Time.parse('2022-09-26 2:30pm')
+)
+Activity.create(
+    name: 'more vibing',
+    description: 'vibez',
+    time: '3pm',
+    date: '2022-09-23',
+    group_id: 1,
+    datetime: Time.parse('2022-09-23 3pm')
+)
+Activity.create(
+    name: 'thing',
+    description: 'things',
+    time: '2pm',
+    date: '2022-09-23',
+    group_id: 1,
+    datetime: Time.parse('2022-09-23 2pm')
+)
+
