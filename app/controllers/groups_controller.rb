@@ -12,6 +12,11 @@ class GroupsController < ApplicationController
         render json: group, serializer: GroupsShowMethodSerializer
     end
 
+    def create
+        group = Group.create(group_params)
+        render json: group, status: :created
+    end
+
     private 
 
     def find_group 
@@ -22,4 +27,7 @@ class GroupsController < ApplicationController
         render json: {error: 'Group not found'}, status: :not_found 
     end
 
+    def group_params
+        params.permit(:name, :location, :description)
+    end
 end
