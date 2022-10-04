@@ -40,31 +40,35 @@ export default function Login({ setUser, setIsLoggedIn, setTripCardData }) {
   return (
     <div className="login">
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="login-form">
+        <h1 className="logo">TRIP-E</h1>
+        <h3 className="tagline">Start Tripping</h3>
         <label>
-          Username:
           <input
             type="text"
             name="username"
             value={loginData.username}
             onChange={handleLogin}
+            placeholder="Username"
+            className="input-fields"
           />
         </label>
         <br />
         <label>
-          Password:
           <input
             type="text"
             name="password"
             value={loginData.password}
             onChange={handleLogin}
+            placeholder="Password"
+            className="input-fields"
           />
 
         </label>
         <br />
-        <button type="submit">Login</button>
+        <button type="submit" className="login-signup-button">Login</button>
         <br />
-      <Link to='/signup'>Not a member?<br/>
+      <Link to='/signup' className="login-membersignup">Not a member?
         Sign up!</Link>
       </form>
     </div>

@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     def create
         user = User.create!(user_params)
         token = encode_token({user_id: user.id})
-        render json: {user:user, token:token}
+        render json: {user:user, token:token, groups: user.groups}
     end
     def login
         user = User.find_by!(username:params[:username]).try(:authenticate, params[:password])

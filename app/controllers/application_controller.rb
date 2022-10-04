@@ -11,7 +11,7 @@ class ApplicationController < ActionController::API
     def decode_token(token)
         JWT.decode(token, SECRET_KEY)[0]["user_id"]
     end
-  
+    
     private
     def render_invalid_token(e)
         render json: {errors: ["Please log in"]}, status: :unauthorized
