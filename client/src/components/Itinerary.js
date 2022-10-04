@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Link, useRouteMatch } from 'react-router-dom'
 import TripDetails from './TripDetails'
 import TripCarousel from './TripCarousel'
-import Calendar, { MonthView } from 'react-calendar'
-import 'react-calendar/dist/Calendar.css'
 
 export default function Itinerary() {
     const match = useRouteMatch()
@@ -34,11 +32,7 @@ export default function Itinerary() {
     <div>
     <Link to='/'>back</Link>
     <TripDetails/>
-    <h1>{groupData.name}</h1>
-    <h2>{groupData.description}</h2>
-    <h3>{groupData.start_date} - {groupData.end_date}</h3>
-    <Calendar calendarType='US' view='month' selectRange onChange={(value) => console.log(value)} />
-    <TripCarousel groupActivities={groupActivities} dateRange={dateRange}/>
+    <TripCarousel groupActivities={groupActivities} dateRange={dateRange} groupData={groupData}/>
     {/* <MonthView tileContent={<p>maybe this can work?</p>} activeStartDate={new Date(2022, 9, 22)} minDate={new Date(new Date(2017, 9, 1))} maxDate={new Date(new Date(2022, 9, 22))} /> */}
     
     </div>

@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
 
     def index 
-        activities = Activity.all 
+        activities = Activity.all.order(:datetime)
         render json: activities
     end
 
