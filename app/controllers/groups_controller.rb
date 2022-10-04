@@ -13,7 +13,16 @@ class GroupsController < ApplicationController
     end
 
     def create
+        # get token
+        token = request.headers["token"]
+        # decode token
+        user_id = decode_token(token)
+        # find user from decoded token(user_id)
+        user = User.find(user_id)
+
         group = Group.create(group_params)
+        member = Membership.create(user_id, group.id)
+        # create membership with user_id and group.id
         render json: group, status: :created
     end
 
@@ -28,6 +37,6 @@ class GroupsController < ApplicationController
     end
 
     def group_params
-        params.permit(:name, :location, :description)
+        params.permit(:name, :location, :description, :end_date, :start_date)
     end
 end

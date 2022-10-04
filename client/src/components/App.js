@@ -29,9 +29,7 @@ function App() {
   //     });
   // }, [isLoggedIn]);
 
-
-
-useEffect(() => {
+  useEffect(() => {
     let token = localStorage.getItem("jwt");
     if (token && !isLoggedIn) {
       fetch("http://localhost:3000/profile", {
@@ -42,30 +40,47 @@ useEffect(() => {
       })
         .then((res) => res.json())
         .then((data) => {
+          if (data["error"]) {
+            localStorage.clear();
+          } else {
             setIsLoggedIn(true);
             setUser(data);
-            setTripCardData(data.groups)
+            setTripCardData(data.groups);
+          }
         });
     }
   }, []);
-
 
   return (
     <div className="App">
       <Switch>
         <Route exact path="/">
           {/* {isLoggedIn ? <TripHomePage tripCardData={tripCardData} /> : <Redirect to='/login'/>} */}
-          <TripHomePage user={user} tripCardData={tripCardData} setUser={setUser}/>
+          <TripHomePage
+            isLoggedIn={isLoggedIn}
+            user={user}
+            tripCardData={tripCardData}
+            setUser={setUser}
+          />
         </Route>
         <Route path={`/itinerary/:tripid`}>
           {/* {isLoggedIn ?  <Itinerary /> : <Redirect to='/login'/> } */}
-           <Itinerary />
+          <Itinerary />
         </Route>
         <Route path="/login">
-          <Login setUser={setUser} setIsLoggedIn={setIsLoggedIn} setTripCardData={setTripCardData}/>
+          <Login
+            setUser={setUser}
+            setIsLoggedIn={setIsLoggedIn}
+            setTripCardData={setTripCardData}
+          />
         </Route>
         <Route path="/signup">
-          <Signup setSignUpSubmitted={setSignUpSubmitted} />
+          <Signup
+            setUser={setUser}
+            setIsLoggedIn={setIsLoggedIn}
+            setTripCardData={setTripCardData}
+            setSignUpSubmitted={setSignUpSubmitted}
+          />
         </Route>
       </Switch>
     </div>
