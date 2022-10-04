@@ -1,9 +1,16 @@
 import React from 'react'
+import Calendar, { MonthView } from 'react-calendar'
+import 'react-calendar/dist/Calendar.css'
 
 export default function TripForm() {
+    const [tripFormData, setTripFormData] = useState({full_name: '', username: '', password: ''})
     function handleChange(e){
+
     }
     
+    function handleCalendarChange(e){
+
+    }
     function handleSubmit(e){
         e.preventDefault();
         fetch("/groups", {
@@ -31,10 +38,7 @@ export default function TripForm() {
             <input type="text" name="destination"onChange={handleChange}/>
         </label>
         <br />
-        <label>
-            Trip Dates:
-            <input type="text" name="tripdates" onChange={handleChange}/>
-        </label>
+        <Calendar calendarType='US' view='month' selectRange onChange={handleCalendarChange} />
         <br />
         <label>
             Description:
