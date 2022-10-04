@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 export default function Signup({ setSignUpSubmitted }) {
   const [signUpData, setSignUpData] = useState({full_name: '', username: '', password: ''})
-  const history = useHistory()
+
   function handleChange(e){
     setSignUpData({...signUpData, [e.target.name]: e.target.value});
   }
@@ -17,8 +16,8 @@ export default function Signup({ setSignUpSubmitted }) {
          body: JSON.stringify(signUpData),
         })
         .then((r) => r.json())
-        setSignUpSubmitted(prev => !prev)
-        history.push("/login")
+        setSignUpData({full_name: '', username: '', password: ''})
+
     }
   return (
     <div className='login'>

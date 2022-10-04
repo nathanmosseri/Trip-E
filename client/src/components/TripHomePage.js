@@ -28,7 +28,7 @@ export default function TripHomePage({user,tripCardData, setUser}) {
           LOG OUT
         </button>
       <button onClick={handleClick}>{createTripButton ? 'Cancel' : 'Create a Trip'}</button>
-      {createTripButton ? <TripForm  /> : null}
+      {createTripButton ? <TripForm createTripButton={createTripButton} setCreateTripButton={setCreateTripButton}/> : null}
       <h1>My Trips</h1>
       <TripCards tripCardData={tripCardData} />
     </div>
