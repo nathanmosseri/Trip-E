@@ -7,10 +7,10 @@ export default function TripCards({tripCardData}) {
     return (
       <div key={i}>
       <h1 key={trip.name}>{trip.name}</h1>
-      <img key={i+50} src='' alt='' />
+      <img key={trip.end_date} src='' alt='' />
       <h2 key={trip.start_date}>{trip.start_date} - {trip.end_date}</h2>
       <h2 key={trip.location}>{trip.location}</h2>
-      <Link key={i+200} to={`/itinerary/${trip.id}`} >View Trip Details</Link>
+      <Link key={trip.id} to={`/itinerary/${trip.id}`} >View Trip Details</Link>
       </div>
     )
   })

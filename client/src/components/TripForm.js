@@ -30,7 +30,6 @@ export default function TripForm({ createTripButton, setCreateTripButton }) {
       }),
     }).then((r) => r.json());
     setCreateTripButton((prev) => !prev);
-    console.log(tripFormData)
   }
 
   return (
