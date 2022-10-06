@@ -43,6 +43,14 @@ const ActivityForm = ({dateRange, tripId, setActivitySubmitted}) => {
             console.log(data)
             setActivitySubmitted(prev => !prev)
         })
+        setActivityFormData({
+            name: '',
+            description: '',
+            time: '',
+            date: '',
+            group_id: tripId,
+            datetime: ''
+        })
     }
 
     return (
