@@ -2,6 +2,10 @@ class Activity < ApplicationRecord
 
     belongs_to :group
 
+    validates :name, presence: :true
+    validates :date, presence: :true
+    validates :time, presence: :true
+    
     def date_parser
         Date.parse(self.date)
     end

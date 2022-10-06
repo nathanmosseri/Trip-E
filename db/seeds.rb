@@ -13,13 +13,17 @@ Group.create(start_date: 'Sept 22 2022', end_date: 'Sept 29 2022', location: 'Ne
 Group.create(start_date: 'Oct 22 2022', end_date:  'Oct 29 2022', location: 'New Jersey', name: 'Joysey shawww adventure', description: 'Its a Joysey thing')
 Group.create(start_date: 'Aug 22 2023', end_date: 'Aug 29 2023', location: 'Miami', name: 'Miami boys choir', description: 'Adom olam ahser malach')
 
+puts 'group seeded'
+
 35.times do 
     User.create(
         username: Faker::Internet.username,
         full_name: Faker::Name.name ,
-        password:  "123"
+        password:  "1234"
     )
 end
+
+puts 'users seeded'
 
 50.times do 
     Membership.create(
@@ -28,6 +32,7 @@ end
     )
 end
 
+puts 'memberships seeded'
 # 60.times do 
 #     Activity.create(
 #         name: Faker::Hobby.activity,
@@ -78,4 +83,4 @@ Activity.create(
     group_id: 1,
     datetime: Time.parse('2022-09-23 2pm')
 )
-
+puts 'activities seeded'
