@@ -46,6 +46,14 @@ const ActivityForm = ({dateRange, tripId, setActivitySubmitted}) => {
                 alert(data["errors"])
             }
         })
+        setActivityFormData({
+            name: '',
+            description: '',
+            time: '',
+            date: '',
+            group_id: tripId,
+            datetime: ''
+        })
     }
 
     return (
