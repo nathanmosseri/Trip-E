@@ -98,9 +98,10 @@
 
 .tan-background {
   background-color: rgb(250, 235, 215);
-  height: 100vh;
+  height: 100%;
   background-size: cover;
   backdrop-filter: blur(10px);
+  /* margin: 0px; */
 }
 
 .welcome-back {

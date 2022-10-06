@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 
 export default function Login({ setUser, setIsLoggedIn, setTripCardData }) {
   const [loginData, setLoginData] = useState({ username: "", password: "" });
+  
   const history = useHistory();
   function handleLogin(e) {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
@@ -56,7 +57,7 @@ export default function Login({ setUser, setIsLoggedIn, setTripCardData }) {
         <br />
         <label>
           <input
-            type="text"
+            type="password"
             name="password"
             value={loginData.password}
             onChange={handleLogin}

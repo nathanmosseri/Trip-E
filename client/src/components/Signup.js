@@ -35,7 +35,7 @@ export default function Signup({
           setTripCardData(data.groups);
           history.push("/");
         } else {
-          alert(data["error"]);
+          alert(data["errors"]);
         }
       });
     setSignUpData({ full_name: "", username: "", password: "" });
@@ -71,7 +71,7 @@ export default function Signup({
         <br />
         <label>
           <input
-            type="text"
+            type="password"
             name="password"
             onChange={handleChange}
             value={signUpData.password}

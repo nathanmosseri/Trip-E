@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
-
+    rescue_from ActiveRecord::RecordInvalid, with: :username_password_error_handling
 
     def index 
         users = User.all 
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
         token = encode_token({user_id: user.id})
         render json: {user:user, token:token, groups: user.groups}
     end
+    
     def login
         user = User.find_by!(username:params[:username]).try(:authenticate, params[:password])
         if user 
@@ -45,4 +46,7 @@ class UsersController < ApplicationController
         params.permit(:username, :full_name, :password)
     end
 
+    def username_password_error_handling(exception)
+        render json: {errors: exception.record.errors.full_messages}, status: :unprocessable_entity
+    end
 end

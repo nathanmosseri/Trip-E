@@ -39,7 +39,8 @@ export default function TripForm({
         if (data["group"]) {
           setTripCardData([...tripCardData, data.group]);
         } else {
-          alert("somthing went wrong");
+          alert(data["errors"])
+          ;
         }
       });
 
