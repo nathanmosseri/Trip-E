@@ -19,12 +19,12 @@ class GroupsController < ApplicationController
         user_id = decode_token(token)
         # find user from decoded token(user_id)
         user = User.find(user_id)
-
         group = Group.create(group_params)
-        member = Membership.create(user_id, group.id)
+        member = Membership.create(user_id:user.id, group_id:group.id)
         # create membership with user_id and group.id
-        render json: group, status: :created
+        render json: {member:member,group:group}, status: :created
     end
+    
 
     private 
 

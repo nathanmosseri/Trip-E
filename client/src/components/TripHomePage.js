@@ -9,6 +9,7 @@ export default function TripHomePage({
   user,
   tripCardData,
   setUser,
+  setTripCardData,
 }) {
   const history = useHistory();
   const [createTripButton, setCreateTripButton] = useState(false);
@@ -18,37 +19,42 @@ export default function TripHomePage({
   };
 
   return (
-    <div>
-      {isLoggedIn ? (
-        <>
-          <Header user={user} />
-          <button
-            onClick={() => {
-              localStorage.clear();
-              setUser({
-                username: "",
-                password: "",
-              });
-              history.push("/login");
-            }}
-          >
-            LOG OUT
-          </button>
-          <button onClick={handleClick}>
-            {createTripButton ? "Cancel" : "Create a Trip"}
-          </button>
-          {createTripButton ? (
-            <TripForm
-              createTripButton={createTripButton}
-              setCreateTripButton={setCreateTripButton}
-            />
-          ) : null}
-          <h1>My Trips</h1>
-          <TripCards tripCardData={tripCardData} />
-        </>
-      ) : (
-        <h1>Please log in</h1>
-      )}
+    <div className="personal-homepage">
+      <div className="tan-background">
+        {isLoggedIn ? (
+          <>
+            <Header user={user} />
+            <button
+              className="logout"
+              onClick={() => {
+                localStorage.clear();
+                setUser({
+                  username: "",
+                  password: "",
+                });
+                history.push("/login");
+              }}
+            >
+              LOG OUT
+            </button>
+            <button onClick={handleClick} className="homepage-fonts">
+              {createTripButton ? "Cancel" : "Create a Trip"}
+            </button>
+            {createTripButton ? (
+              <TripForm
+                tripCardData={tripCardData}
+                setTripCardData={setTripCardData}
+                createTripButton={createTripButton}
+                setCreateTripButton={setCreateTripButton}
+              />
+            ) : null}
+            <h1 className="homepage-fonts">My Trips</h1>
+            <TripCards tripCardData={tripCardData} />
+          </>
+        ) : (
+          <h1>Please log in</h1>
+        )}
+      </div>
     </div>
   );
 }
