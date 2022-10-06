@@ -61,6 +61,7 @@ function App() {
             user={user}
             tripCardData={tripCardData}
             setUser={setUser}
+            setTripCardData={setTripCardData}
           />
         </Route>
         <Route path={`/itinerary/:tripid`}>

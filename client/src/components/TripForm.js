@@ -1,16 +1,20 @@
 import React, { useState, useRef } from "react";
 import Calendar, { MonthView } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
-export default function TripForm({ createTripButton, setCreateTripButton }) {
+export default function TripForm({
+  setTripCardData,
+  tripCardData,
+  setCreateTripButton,
+}) {
   const [tripFormData, setTripFormData] = useState({
     name: "",
     location: "",
     description: "",
   });
   const calanderRef = useRef(null);
-  const history = useHistory();
+  // const history = useHistory();
 
   function handleChange(e) {
     setTripFormData({ ...tripFormData, [e.target.name]: e.target.value });
@@ -21,6 +25,7 @@ export default function TripForm({ createTripButton, setCreateTripButton }) {
     fetch("http://localhost:3000/groups", {
       method: "POST",
       headers: {
+        token: localStorage.getItem("jwt"),
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -28,9 +33,23 @@ export default function TripForm({ createTripButton, setCreateTripButton }) {
         start_date: calanderRef.current.value[0],
         end_date: calanderRef.current.value[1],
       }),
-    }).then((r) => r.json());
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data["group"]) {
+          setTripCardData([...tripCardData, data.group]);
+        } else {
+          alert("somthing went wrong");
+        }
+      });
+
     setCreateTripButton((prev) => !prev);
-    console.log(tripFormData)
+    setTripFormData({
+      name: "",
+      location: "",
+      description: "",
+    });
+    console.log(tripFormData);
   }
 
   return (
