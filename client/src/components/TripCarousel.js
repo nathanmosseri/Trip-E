@@ -5,10 +5,7 @@ export default function TripCarousel({groupActivities, dateRange, setActivityDel
   const handleDelete = (id) => {
     fetch(`http://localhost:3000/activities/${id}` , {
       method: 'DELETE'
-    }).then(res => res.json())
-    .then((data) => {
-      setActivityDeleted(prev => !prev)
-    })
+    }).then(res => setActivityDeleted(prev => !prev))
   }
 
   const activities = groupActivities.map((activity, i) => {
@@ -22,7 +19,7 @@ export default function TripCarousel({groupActivities, dateRange, setActivityDel
         <h3 key={activity.name}>{activity.name}</h3>
         <h5 key={activity.description}>{activity.description}</h5>
         <button>✏️</button>
-        <button onClick={handleDelete(activity.id)}>🗑</button>
+        <button onClick={(e) => handleDelete( activity.id)}>🗑</button>
       </div>
     )
       }

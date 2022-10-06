@@ -16,7 +16,7 @@ Group.create(start_date: 'Aug 22 2023', end_date: 'Aug 29 2023', location: 'Miam
 puts 'group seeded'
 
 35.times do 
-    User.create(
+    User.create!(
         username: Faker::Internet.username,
         full_name: Faker::Name.name ,
         password:  "1234"
