@@ -17,6 +17,8 @@ export default function TripForm({
   // const history = useHistory();
 
   function handleChange(e) {
+
+  console.log(e.target.value)
     setTripFormData({ ...tripFormData, [e.target.name]: e.target.value });
   }
 

@@ -14,10 +14,10 @@ Group.create(start_date: 'Oct 22 2022', end_date:  'Oct 29 2022', location: 'New
 Group.create(start_date: 'Aug 22 2023', end_date: 'Aug 29 2023', location: 'Miami', name: 'Miami boys choir', description: 'Adom olam ahser malach')
 
 35.times do 
-    User.create(
+    User.create!(
         username: Faker::Internet.username,
         full_name: Faker::Name.name ,
-        password:  "123"
+        password:  "1234"
     )
 end
 
