@@ -6,12 +6,14 @@ export default function TripCarousel({groupActivities, dateRange}) {
     for (let i = 0; i < dateRange.length; i++){
       if(dateRange[i] === activity.date){
     return (
-      <div key={i}>
+      <div key={activity.datetime}>
         <h2 key={dateRange[i]}>{dateRange[i]}</h2>
-        <h6 key={activity.date_parser}>date: {activity.date_parser}</h6>
+        <h6 key={activity.id}>date: {activity.date}</h6>
         <h6 key={activity.time}>time: {activity.time}</h6>
         <h3 key={activity.name}>{activity.name}</h3>
         <h5 key={activity.description}>{activity.description}</h5>
+        <button>✏️</button>
+        <button>🗑</button>
       </div>
     )
       }

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable
 
 
     def index 
@@ -43,6 +44,10 @@ class UsersController < ApplicationController
     end
     def user_params
         params.permit(:username, :full_name, :password)
+    end
+
+    def render_unprocessable(exception)
+        render json: {errors: exception.record.errors.full_messages}, status: :unprocessable_entity
     end
 
 end
