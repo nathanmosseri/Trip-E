@@ -40,8 +40,11 @@ const ActivityForm = ({dateRange, tripId, setActivitySubmitted}) => {
             body: JSON.stringify(activityFormData)
         }).then(res => res.json())
         .then((data) => {
+            if(data["activity"]) {
             console.log(data)
-            setActivitySubmitted(prev => !prev)
+            setActivitySubmitted(prev => !prev)} else {
+                alert(data["errors"])
+            }
         })
     }
 
