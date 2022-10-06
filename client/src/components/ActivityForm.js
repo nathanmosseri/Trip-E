@@ -50,7 +50,7 @@ const ActivityForm = ({dateRange, tripId, setActivitySubmitted}) => {
             <form onSubmit={handleSubmit}>
             <input name="name" value={activityFormData.name} placeholder="Activity name" onChange={handleChange}/>
             <input name="description" value={activityFormData.description} placeholder="Activity description" onChange={handleChange}/>
-            <input name="location" placeholder="Location" onChange={handleChange}/>
+            {/* <input name="location" placeholder="Location" onChange={handleChange}/> */}
             <select name="date" onChange={handleChange}>
                 <option>Select a date</option>
                 {dateDropdown}

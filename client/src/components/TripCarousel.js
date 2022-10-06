@@ -1,6 +1,15 @@
 import React from 'react'
 
-export default function TripCarousel({groupActivities, dateRange}) {
+export default function TripCarousel({groupActivities, dateRange, setActivityDeleted}) {
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:3000/activities/${id}` , {
+      method: 'DELETE'
+    }).then(res => res.json())
+    .then((data) => {
+      setActivityDeleted(prev => !prev)
+    })
+  }
 
   const activities = groupActivities.map((activity, i) => {
     for (let i = 0; i < dateRange.length; i++){
@@ -13,7 +22,7 @@ export default function TripCarousel({groupActivities, dateRange}) {
         <h3 key={activity.name}>{activity.name}</h3>
         <h5 key={activity.description}>{activity.description}</h5>
         <button>✏️</button>
-        <button>🗑</button>
+        <button onClick={handleDelete(activity.id)}>🗑</button>
       </div>
     )
       }
