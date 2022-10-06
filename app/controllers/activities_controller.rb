@@ -1,5 +1,7 @@
 class ActivitiesController < ApplicationController
 
+    rescue_from ActiveRecord::RecordInvalid, with: :activities_error_handling
+
     def index 
         activities = Activity.all.order(:datetime)
         render json: activities
@@ -32,5 +34,8 @@ class ActivitiesController < ApplicationController
         Activity.find(params[:id])
     end
 
+    def activities_error_handling(exception)
+        render json: {errors: exception.record.errors.full_messages}, status: :unprocessable_entity
+    end
 
 end
