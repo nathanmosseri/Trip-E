@@ -31,7 +31,6 @@ export default function Itinerary() {
     <ActivityForm dateRange={dateRange} tripId={match.params.tripid} setActivitySubmitted={setActivitySubmitted} />
     <TripCarousel groupActivities={groupActivities} dateRange={dateRange} groupData={groupData} setActivityDeleted={setActivityDeleted}/>
     {/* <MonthView tileContent={<p>maybe this can work?</p>} activeStartDate={new Date(2022, 9, 22)} minDate={new Date(new Date(2017, 9, 1))} maxDate={new Date(new Date(2022, 9, 22))} /> */}
-    
     </div>
   )
 }

@@ -40,6 +40,13 @@ export default function TripHomePage({
             <button onClick={handleClick} className="homepage-fonts">
               {createTripButton ? "Cancel" : "Create a Trip"}
             </button>
+            <h1 className="my-trips">My Trips</h1>
+            <div className="display-flex-styling">
+            <div className="trip-cards-create">
+              <div className="display-flex">
+            <TripCards tripCardData={tripCardData} />
+            </div>
+            </div>
             {createTripButton ? (
               <TripForm
                 tripCardData={tripCardData}
@@ -48,13 +55,13 @@ export default function TripHomePage({
                 setCreateTripButton={setCreateTripButton}
               />
             ) : null}
-            <h1 className="homepage-fonts">My Trips</h1>
-            <TripCards tripCardData={tripCardData} />
+            </div>
           </>
         ) : (
           <h1>Please log in</h1>
         )}
       </div>
+      <footer className="footer">Partner With Us</footer>
     </div>
   );
 }
