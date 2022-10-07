@@ -89,20 +89,7 @@
   cursor: pointer;
 }
 
-/* //welcome back homepage */
-/* .personal-homepage {
-  background-image: url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1721&q=80");
-  height: 100vh;
-  background-size: cover;
-} */
-
-.tan-background {
-  background-color: rgb(250, 235, 215);
-  height: 100%;
-  background-size: cover;
-  backdrop-filter: blur(10px);
-  /* margin: 0px; */
-}
+/* Homepage */
 
 .welcome-back {
   font-family: "Spicy Rice", cursive;
@@ -142,4 +129,133 @@
   font-family: "Roboto", sans-serif;
   color: black;
   font-size: 1.5em;
+}
+
+.personal-homepage {
+  background-image: url("https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1721&q=80");
+  height: 100vh;
+  /* opacity: 0.9; */
+  background-size: cover;
+}
+
+.tan-background {
+  background-color: rgba(250, 235, 215, 0.036);
+  backdrop-filter: blur(10px);
+  height: 100vh;
+}
+
+.text-styling {
+  background-color: antiquewhite;
+  width: 45%;
+  /* border-radius: 10%; */
+  height: 20em;
+  display: block;
+}
+/* .trip-cards-create {
+  display: flex;
+  font-family: "Roboto", sans-serif;
+} */
+
+.trip-cards-create {
+  display: flex;
+  font-family: "Roboto", sans-serif;
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: scroll;
+  max-height: 60vh;
+  padding: 2rem;
+}
+
+.trip-cards {
+  margin-bottom: 10%;
+  margin-top: 10%;
+  width: 100vh;
+  text-align: center;
+  margin-left: 30%;
+  opacity: .8;
+}
+
+.footer {
+ background-color: aqua;
+ height: 20vh;
+}
+
+.image {
+  margin-top: 0;
+  
+}
+
+.trip-form {
+  background-color: antiquewhite;
+  /* border-radius: 25%; */
+  margin-left: 40%;
+  height: 70%;
+  width: 180%;
+  opacity: .8;
+  text-align: center;
+}
+
+.display-flex-styling {
+  display: flex;
+}
+
+.form-inputs {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-color: black;
+  border-width: 1px;
+  background: transparent;
+  /* backdrop-filter: blur(10px); */
+  margin: 5%;
+  font-family: "Roboto", sans-serif;
+  color: black;
+}
+
+.form-inputs:focus {
+  outline: none;
+}
+
+.label-names {
+  font-family: "Roboto", sans-serif;
+}
+
+.plan-a-trip {
+  font-family: "Roboto", sans-serif;
+  padding-top: 10%;
+}
+
+.trip-name {
+  font-family: "Spicy Rice", cursive;
+  float: left;
+  padding-left: 5%;
+}
+
+.dates {
+  font-size: 80%;
+  font-style: italic;
+}
+
+.location {
+  float: left;
+  padding-left: 0;
+  margin: 0;
+}
+
+.my-trips {
+  margin-bottom: 5%;
+  margin-left: 25%;
+}
+
+.card-details {
+  float: left;
+  font-size: 70%;
+  padding: 2%;
+}
+
+.location-width {
+  width: 10vw;
 }
