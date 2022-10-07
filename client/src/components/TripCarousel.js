@@ -79,12 +79,13 @@ export default function TripCarousel({
       if (dateRange[i] === activity.date) {
         return (
           <div key={activity.datetime} className="activity-cards">
+            <p key={activity.name} className="activity-title">{activity.name}</p>
             <img
               src="https://en.unesco.org/creativity/sites/creativity/files/desert.jpg"
               width="10%"
               height="70%"
               className="image"
-            />
+              />
             <div className="activity-cards-text-container">
               {editDate ? (
                 <form onSubmit={(e) => submitDateChange(e, activity.id)}>
@@ -102,9 +103,9 @@ export default function TripCarousel({
                   <button type="submit">Save</button>
                 </form>
               ) : (
-                <p key={dateRange[i]} className="each-activity-card">{dateRange[i]}</p>
-              )}
-              <button onClick={handleEditDate} className="activity-buttons">Change Date</button>
+                <p key={dateRange[i]} className="each-activity-card"><strong>{dateRange[i]}</strong></p>
+                )}
+                <button onClick={handleEditDate} className="activity-buttons">Change Date</button>
               {editTime ? (
                 <form onSubmit={(e) => submitTimeChange(e, activity.id)}>
                   <input
@@ -118,9 +119,8 @@ export default function TripCarousel({
                 </form>
               ) : (
                 <p key={activity.time} className="each-activity-card">time: {activity.time}</p>
-              )}
+                )}
               <button onClick={handleEditTime} className="activity-buttons">Change Time</button>
-              <p key={activity.name} className="activity-title">{activity.name}</p>
               <p key={activity.description} className="each-activity-card-description">{activity.description}</p>
             </div>
             <button onClick={() => handleDelete(activity.id)} className="delete-activity-button">🗑</button>
