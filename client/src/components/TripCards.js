@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom'
 
 export default function TripCards({tripCardData}) {
 
+  const handleTripDelete = (id) => {
+    fetch(`http://localhost:3000/groups/${id}`, {
+      method: 'DELETE'
+    })
+    window.location.reload()
+  }
+
   const tripCard = tripCardData.map((trip, i) => {
     return (
       <div key={i} className="trip-cards">
@@ -13,6 +20,7 @@ export default function TripCards({tripCardData}) {
       <h2 key={trip.location} className="location-width">{trip.location}</h2>
       <h2 key={trip.start_date} >{trip.start_date} - {trip.end_date}</h2> 
       <Link key={trip.id} to={`/itinerary/${trip.id}`} >View Trip Details</Link>
+      <button onClick={() => handleTripDelete(trip.id)}>Delete Trip</button>
       </div>
       </div>
       </div>

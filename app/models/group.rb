@@ -1,8 +1,8 @@
 class Group < ApplicationRecord
 
-    has_many :memberships 
+    has_many :memberships, dependent: :destroy
     has_many :users, through: :memberships
-    has_many :activities
+    has_many :activities, dependent: :destroy
 
 
     validates :name, presence: :true
