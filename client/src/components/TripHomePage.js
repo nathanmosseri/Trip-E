@@ -9,7 +9,7 @@ export default function TripHomePage({
   user,
   tripCardData,
   setUser,
-  setTripCardData
+  setTripCardData,
 }) {
   const history = useHistory();
   const [createTripButton, setCreateTripButton] = useState(false);
@@ -42,28 +42,23 @@ export default function TripHomePage({
             </button>
             <h1 className="my-trips">My Trips</h1>
             <div className="display-flex-styling">
-            <div className="trip-cards-create">
-              <div className="display-flex">
-            <TripCards tripCardData={tripCardData} />
+              <div className="trip-cards-create">
+                <TripCards tripCardData={tripCardData} />
+              </div>
+              {createTripButton ? (
+                <TripForm
+                  tripCardData={tripCardData}
+                  setTripCardData={setTripCardData}
+                  createTripButton={createTripButton}
+                  setCreateTripButton={setCreateTripButton}
+                />
+              ) : null}
             </div>
-            </div>
-            {createTripButton ? (
-              <TripForm
-                tripCardData={tripCardData}
-                setTripCardData={setTripCardData}
-                createTripButton={createTripButton}
-                setCreateTripButton={setCreateTripButton}
-              />
-            ) : null}
-
-            </div>
-
           </>
         ) : (
           <h1>Please log in</h1>
         )}
       </div>
-      <footer className="footer">Partner With Us</footer>
     </div>
   );
 }

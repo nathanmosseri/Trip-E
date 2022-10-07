@@ -27,12 +27,16 @@ export default function Itinerary() {
 
 
   return (
-    <div>
-    <Link to='/'>back</Link>
+    <div className='itinerary-page'>
+      <div className='tan-background'>
+    <Link to='/' className="back-button">back</Link>
+    <div className='itinerary-flex'>
     <TripDetails groupData={groupData}/>
     <ActivityForm dateRange={dateRange} tripId={match.params.tripid} setActivitySubmitted={setActivitySubmitted} />
+    </div>
     <TripCarousel setTimeEdited={setTimeEdited} setDateEdited={setDateEdited} groupActivities={groupActivities} dateRange={dateRange} groupData={groupData} setActivityDeleted={setActivityDeleted}/>
     {/* <MonthView tileContent={<p>maybe this can work?</p>} activeStartDate={new Date(2022, 9, 22)} minDate={new Date(new Date(2017, 9, 1))} maxDate={new Date(new Date(2022, 9, 22))} /> */}
+    </div>
     </div>
   )
 }

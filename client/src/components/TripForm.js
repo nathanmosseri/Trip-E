@@ -85,7 +85,7 @@ export default function TripForm({
         </label>
         <br />
         <label className="label-names">
-            Arrival:
+          Arrival:
           <input
             type="date"
             name="start_date"
