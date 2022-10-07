@@ -9,7 +9,7 @@ export default function TripHomePage({
   user,
   tripCardData,
   setUser,
-  setTripCardData,
+  setTripCardData
 }) {
   const history = useHistory();
   const [createTripButton, setCreateTripButton] = useState(false);
@@ -49,7 +49,7 @@ export default function TripHomePage({
               />
             ) : null}
             <h1 className="homepage-fonts">My Trips</h1>
-            <TripCards tripCardData={tripCardData} />
+            <TripCards tripCardData={tripCardData}/>
           </>
         ) : (
           <h1>Please log in</h1>

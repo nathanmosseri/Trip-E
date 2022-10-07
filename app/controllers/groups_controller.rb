@@ -13,6 +13,12 @@ class GroupsController < ApplicationController
         render json: group, serializer: GroupsShowMethodSerializer
     end
 
+    def destroy 
+        group = find_group
+        group.destroy
+        head :no_content
+    end
+
     def create
         # get token
         token = request.headers["token"]
